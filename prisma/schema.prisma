@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  //provider = "sqlite"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//id auto increment  @default(uuid()) - Universal Unique ID - ex: b40cae20-d11a-11ec-9d64-0242ac120002
+//id Int @id @default(autoincrement()) - 1- 2- 3 e etc..
+
+// Snowflake ID - criado pelo Twitter -
+model Feedback {
+  id String @id @default(uuid())
+
+  type       String //@db.VarChar(100)
+  comment    String
+  screenshot String?
+
+  @@map("feedbacks")
+}
