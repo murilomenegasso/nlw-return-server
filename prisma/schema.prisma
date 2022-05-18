@@ -18,9 +18,9 @@ datasource db {
 model Feedback {
   id String @id @default(uuid())
 
-  type       String //@db.VarChar(100)
-  comment    String
-  screenshot String?
+  type       String  @db.VarChar(120)
+  comment    String  @db.VarChar(120)
+  screenshot String? @db.Text
 
   @@map("feedbacks")
 }
